@@ -1,0 +1,31 @@
+from sklearn import linear_model
+import pandas
+
+
+df = pandas.read_csv("")
+
+X = df[['MeanTemp', "TotalRain", "TotalSnow", "HighWind", "WinD"]]
+y = df['Rating']
+
+regr = linear_model.LinearRegression()
+regr.fit(X, y)
+
+print("How hot is it? ")
+Temp = input()
+
+print("How much rain is there today? ")
+Rain = input()
+
+print("How much snow is there today? ")
+Snow = input()
+
+print("How windy is it? ")
+Wind = input()
+
+print("What direction is the wind? (N = 1, E = 2, S = 3, W = 4) ")
+WindD = input()
+
+predictedRating = regr.predict(
+    [[int(Temp), int(Rain), int(Snow), int(Wind), int(WindD)]])
+
+print(predictedRating)
